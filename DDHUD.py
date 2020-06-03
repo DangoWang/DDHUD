@@ -7,8 +7,8 @@
 #   wangdonghao
 #
 # Usage:
-#   createNode -type DHHUD;
-#   createNode -type DHHUDBorder;
+#   createNode DHHUD;
+#   createNode DHHUDBorder;
 ###############################################################################
 import maya.api.OpenMaya as om
 import maya.api.OpenMayaRender as omr
