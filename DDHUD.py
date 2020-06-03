@@ -262,14 +262,14 @@ class DHHUDLocator(omui.MPxLocatorNode):
         DHHUDLocator.addAttribute(border_alpha)
     
     
-class DHHUDHata(om.MUserData):
+class DHHUDData(om.MUserData):
     """
     """
 
     def __init__(self):
         """
         """
-        super(DHHUDHata, self).__init__(False)
+        super(DHHUDData, self).__init__(False)
 
 
 class DHHUDBorderData(om.MUserData):
@@ -407,8 +407,8 @@ class DHHUDDrawOverride(omr.MPxDrawOverride):
         """
         """
         data = old_data
-        if not isinstance(data, DHHUDHata):
-            data = DHHUDHata()
+        if not isinstance(data, DHHUDData):
+            data = DHHUDData()
         fnDagNode = om.MFnDagNode(obj_path)
         # 需要先获取数据
         data.camera_name = fnDagNode.findPlug("camera", False).asString()
@@ -440,7 +440,7 @@ class DHHUDDrawOverride(omr.MPxDrawOverride):
     def addUIDrawables(self, obj_path, draw_manager, frame_context, data):
         """
         """
-        if not isinstance(data, DHHUDHata):
+        if not isinstance(data, DHHUDData):
             return
 
         camera_path = frame_context.getCurrentCameraPath()
