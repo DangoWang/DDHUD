@@ -1,14 +1,14 @@
 # coding: utf8
 ###############################################################################
 # Name:
-#   DHHUD.py
+#   DDHUD.py
 #
 # Author:
 #   wangdonghao
 #
 # Usage:
-#   createNode DHHUD;
-#   createNode DHHUDBorder;
+#   createNode DDHUD;
+#   createNode DDHUDBorder;
 ###############################################################################
 import maya.api.OpenMaya as om
 import maya.api.OpenMayaRender as omr
@@ -25,18 +25,18 @@ def maya_useNewAPI():
     pass
 
 
-class DHHUDBorderLocator(omui.MPxLocatorNode):
+class DDHUDBorderLocator(omui.MPxLocatorNode):
     """
     """
-    NAME = 'DHHUDBorder'
+    NAME = 'DDHUDBorder'
     TYPE_ID = om.MTypeId(0x0011A887)
-    DRAW_DB_CLASSIFICATION = 'drawdb/geometry/DHHUDBorder'
-    DRAW_REGISTRANT_ID = 'DHHUDBorderNode'
+    DRAW_DB_CLASSIFICATION = 'drawdb/geometry/DDHUDBorder'
+    DRAW_REGISTRANT_ID = 'DDHUDBorderNode'
 
     def __init__(self):
         """
         """
-        super(DHHUDBorderLocator, self).__init__()
+        super(DDHUDBorderLocator, self).__init__()
 
     def excludeAsLocator(self):
         """
@@ -47,7 +47,7 @@ class DHHUDBorderLocator(omui.MPxLocatorNode):
     def creator(cls):
         """
         """
-        return DHHUDBorderLocator()
+        return DDHUDBorderLocator()
 
     @classmethod
     def initialize(cls):
@@ -59,7 +59,7 @@ class DHHUDBorderLocator(omui.MPxLocatorNode):
         cam_attr.writable = True
         cam_attr.storable = True
         cam_attr.keyable = False
-        DHHUDBorderLocator.addAttribute(camera_name)
+        DDHUDBorderLocator.addAttribute(camera_name)
         # 上遮罩高
         attr = om.MFnNumericAttribute()
         border_h = attr.create("topBorderHeight", "tbh", om.MFnNumericData.kFloat, 0.05)
@@ -68,7 +68,7 @@ class DHHUDBorderLocator(omui.MPxLocatorNode):
         attr.keyable = True
         attr.setMin(-1)
         attr.setMax(1)
-        DHHUDBorderLocator.addAttribute(border_h)
+        DDHUDBorderLocator.addAttribute(border_h)
         # 上遮罩颜色
         attr = om.MFnNumericAttribute()
         border_color = attr.createColor("topBorderColor", "tbc")
@@ -76,7 +76,7 @@ class DHHUDBorderLocator(omui.MPxLocatorNode):
         attr.writable = True
         attr.storable = True
         attr.keyable = True
-        DHHUDBorderLocator.addAttribute(border_color)
+        DDHUDBorderLocator.addAttribute(border_color)
         # 上遮罩透明度
         attr = om.MFnNumericAttribute()
         border_alpha = attr.create("topBorderAlpha", "tba", om.MFnNumericData.kFloat, 1.0)
@@ -85,7 +85,7 @@ class DHHUDBorderLocator(omui.MPxLocatorNode):
         attr.keyable = True
         attr.setMin(0.0)
         attr.setMax(1.0)
-        DHHUDBorderLocator.addAttribute(border_alpha)
+        DDHUDBorderLocator.addAttribute(border_alpha)
 
         # 下遮罩高
         attr = om.MFnNumericAttribute()
@@ -95,7 +95,7 @@ class DHHUDBorderLocator(omui.MPxLocatorNode):
         attr.keyable = True
         attr.setMin(-1)
         attr.setMax(1)
-        DHHUDBorderLocator.addAttribute(bborder_h)
+        DDHUDBorderLocator.addAttribute(bborder_h)
         # 下遮罩颜色
         attr = om.MFnNumericAttribute()
         bborder_color = attr.createColor("bottomBorderColor", "bbc")
@@ -103,7 +103,7 @@ class DHHUDBorderLocator(omui.MPxLocatorNode):
         attr.writable = True
         attr.storable = True
         attr.keyable = True
-        DHHUDBorderLocator.addAttribute(bborder_color)
+        DDHUDBorderLocator.addAttribute(bborder_color)
         # 下遮罩透明度
         attr = om.MFnNumericAttribute()
         bborder_alpha = attr.create("bottomBorderAlpha", "bba", om.MFnNumericData.kFloat, 1.0)
@@ -112,16 +112,16 @@ class DHHUDBorderLocator(omui.MPxLocatorNode):
         attr.keyable = True
         attr.setMin(0.0)
         attr.setMax(1.0)
-        DHHUDBorderLocator.addAttribute(bborder_alpha)
+        DDHUDBorderLocator.addAttribute(bborder_alpha)
 
 
-class DHHUDLocator(omui.MPxLocatorNode):
+class DDHUDLocator(omui.MPxLocatorNode):
     """
     """
-    NAME = 'DHHUD'
+    NAME = 'DDHUD'
     TYPE_ID = om.MTypeId(0x0011A889)
-    DRAW_DB_CLASSIFICATION = 'drawdb/geometry/DHHUD'
-    DRAW_REGISTRANT_ID = 'DHHUDNode'
+    DRAW_DB_CLASSIFICATION = 'drawdb/geometry/DDHUD'
+    DRAW_REGISTRANT_ID = 'DDHUDNode'
     # 文字， 位置， 颜色， 大小
     # ATTRS = ["text", "t", "X", "x", 'Y', 'y', 'fontScale', 'fs', 'fontColor', 'fc', 'fontAlpha', 'fa',
     #          'border', 'b', 'borderWidth', 'bw', 'borderHeight', 'bh', 'borderColor', 'bc', 'borderAlpha', 'ba']
@@ -129,7 +129,7 @@ class DHHUDLocator(omui.MPxLocatorNode):
     def __init__(self):
         """
         """
-        super(DHHUDLocator, self).__init__()
+        super(DDHUDLocator, self).__init__()
 
     def excludeAsLocator(self):
         """
@@ -140,7 +140,7 @@ class DHHUDLocator(omui.MPxLocatorNode):
     def creator(cls):
         """
         """
-        return DHHUDLocator()
+        return DDHUDLocator()
 
     @classmethod
     def initialize(cls):
@@ -155,7 +155,7 @@ class DHHUDLocator(omui.MPxLocatorNode):
         cam_attr.writable = True
         cam_attr.storable = True
         cam_attr.keyable = False
-        DHHUDLocator.addAttribute(camera_name)
+        DDHUDLocator.addAttribute(camera_name)
         #  文字
         text_attr = om.MFnTypedAttribute()
         stringData = om.MFnStringData()
@@ -164,7 +164,7 @@ class DHHUDLocator(omui.MPxLocatorNode):
         text_attr.writable = True
         text_attr.storable = True
         text_attr.keyable = True
-        DHHUDLocator.addAttribute(text)
+        DDHUDLocator.addAttribute(text)
         # 文字位置x
         attr = om.MFnNumericAttribute()
         x = attr.create("X", "x", om.MFnNumericData.kFloat, 0.5)
@@ -173,7 +173,7 @@ class DHHUDLocator(omui.MPxLocatorNode):
         attr.keyable = True
         attr.setMin(0.0)
         attr.setMax(1.0)
-        DHHUDLocator.addAttribute(x)
+        DDHUDLocator.addAttribute(x)
         # 文字位置y
         attr = om.MFnNumericAttribute()
         y = attr.create("Y", "y", om.MFnNumericData.kFloat, 0.5)
@@ -182,7 +182,7 @@ class DHHUDLocator(omui.MPxLocatorNode):
         attr.keyable = True
         attr.setMin(0.0)
         attr.setMax(1.0)
-        DHHUDLocator.addAttribute(y)
+        DDHUDLocator.addAttribute(y)
         # 字体名称
         t_attr = om.MFnTypedAttribute()
         stringData = om.MFnStringData()
@@ -191,7 +191,7 @@ class DHHUDLocator(omui.MPxLocatorNode):
         t_attr.writable = True
         t_attr.storable = True
         t_attr.keyable = True
-        DHHUDLocator.addAttribute(font_name)
+        DDHUDLocator.addAttribute(font_name)
         # 文字大小
         attr = om.MFnNumericAttribute()
         font_scale = attr.create("fontScale", "fs", om.MFnNumericData.kFloat, 1.0)
@@ -200,7 +200,7 @@ class DHHUDLocator(omui.MPxLocatorNode):
         attr.keyable = True
         attr.setMin(0.1)
         attr.setMax(2.0)
-        DHHUDLocator.addAttribute(font_scale)
+        DDHUDLocator.addAttribute(font_scale)
         # 文字颜色
         attr = om.MFnNumericAttribute()
         font_color = attr.createColor("fontColor", "fc")
@@ -208,7 +208,7 @@ class DHHUDLocator(omui.MPxLocatorNode):
         attr.writable = True
         attr.storable = True
         attr.keyable = True
-        DHHUDLocator.addAttribute(font_color)
+        DDHUDLocator.addAttribute(font_color)
         # 文字透明度
         attr = om.MFnNumericAttribute()
         font_alpha = attr.create("fontAlpha", "fa", om.MFnNumericData.kFloat, 1.0)
@@ -217,14 +217,14 @@ class DHHUDLocator(omui.MPxLocatorNode):
         attr.keyable = True
         attr.setMin(0.0)
         attr.setMax(1.0)
-        DHHUDLocator.addAttribute(font_alpha)
+        DDHUDLocator.addAttribute(font_alpha)
         # 是否有遮罩
         attr = om.MFnNumericAttribute()
         border = attr.create("border", "b", om.MFnNumericData.kBoolean, True)
         attr.writable = True
         attr.storable = True
         attr.keyable = True
-        DHHUDLocator.addAttribute(border)
+        DDHUDLocator.addAttribute(border)
         # 遮罩宽
         attr = om.MFnNumericAttribute()
         border_w = attr.create("borderWidth", "bw", om.MFnNumericData.kFloat, 2.0)
@@ -233,7 +233,7 @@ class DHHUDLocator(omui.MPxLocatorNode):
         attr.keyable = True
         attr.setMin(0.0)
         attr.setMax(100.0)
-        DHHUDLocator.addAttribute(border_w)
+        DDHUDLocator.addAttribute(border_w)
         # 遮罩高
         attr = om.MFnNumericAttribute()
         border_h = attr.create("borderHeight", "bh", om.MFnNumericData.kFloat, 1.0)
@@ -242,7 +242,7 @@ class DHHUDLocator(omui.MPxLocatorNode):
         attr.keyable = True
         attr.setMin(0.0)
         attr.setMax(2.0)
-        DHHUDLocator.addAttribute(border_h)
+        DDHUDLocator.addAttribute(border_h)
         # 遮罩颜色
         attr = om.MFnNumericAttribute()
         border_color = attr.createColor("borderColor", "bc")
@@ -250,7 +250,7 @@ class DHHUDLocator(omui.MPxLocatorNode):
         attr.writable = True
         attr.storable = True
         attr.keyable = True
-        DHHUDLocator.addAttribute(border_color)
+        DDHUDLocator.addAttribute(border_color)
         # 遮罩透明度
         attr = om.MFnNumericAttribute()
         border_alpha = attr.create("borderAlpha", "ba", om.MFnNumericData.kFloat, 1.0)
@@ -259,37 +259,37 @@ class DHHUDLocator(omui.MPxLocatorNode):
         attr.keyable = True
         attr.setMin(0.0)
         attr.setMax(1.0)
-        DHHUDLocator.addAttribute(border_alpha)
+        DDHUDLocator.addAttribute(border_alpha)
     
     
-class DHHUDData(om.MUserData):
+class DDHUDData(om.MUserData):
     """
     """
 
     def __init__(self):
         """
         """
-        super(DHHUDData, self).__init__(False)
+        super(DDHUDData, self).__init__(False)
 
 
-class DHHUDBorderData(om.MUserData):
+class DDHUDBorderData(om.MUserData):
     def __init__(self):
         """
         """
-        super(DHHUDBorderData, self).__init__(False)
+        super(DDHUDBorderData, self).__init__(False)
 
 
-class DHHUDBorderDrawOverride(omr.MPxDrawOverride):
+class DDHUDBorderDrawOverride(omr.MPxDrawOverride):
     """
     """
-    NAME = "DHhud_border_draw_override"
+    NAME = "DDhud_border_draw_override"
 
     def __init__(self, obj):
         """
         """
-        super(DHHUDBorderDrawOverride, self).__init__(obj, DHHUDBorderDrawOverride.draw)
+        super(DDHUDBorderDrawOverride, self).__init__(obj, DDHUDBorderDrawOverride.draw)
 
-    def supporteDHrawAPIs(self):
+    def supporteDDrawAPIs(self):
         """
         """
         return (omr.MRenderer.kAllDevices)
@@ -308,8 +308,8 @@ class DHHUDBorderDrawOverride(omr.MPxDrawOverride):
         """
         """
         data = old_data
-        if not isinstance(data, DHHUDBorderData):
-            data = DHHUDBorderData()
+        if not isinstance(data, DDHUDBorderData):
+            data = DDHUDBorderData()
 
         fnDagNode = om.MFnDagNode(obj_path)
         data.camera_name = fnDagNode.findPlug("camera", False).asString()
@@ -336,7 +336,7 @@ class DHHUDBorderDrawOverride(omr.MPxDrawOverride):
     def addUIDrawables(self, obj_path, draw_manager, frame_context, data):
         """
         """
-        if not isinstance(data, DHHUDBorderData):
+        if not isinstance(data, DDHUDBorderData):
             return
 
         camera_path = frame_context.getCurrentCameraPath()
@@ -369,7 +369,7 @@ class DHHUDBorderDrawOverride(omr.MPxDrawOverride):
     def creator(obj):
         """
         """
-        return DHHUDBorderDrawOverride(obj)
+        return DDHUDBorderDrawOverride(obj)
 
     @staticmethod
     def draw(context, data):
@@ -378,17 +378,17 @@ class DHHUDBorderDrawOverride(omr.MPxDrawOverride):
         return
 
 
-class DHHUDDrawOverride(omr.MPxDrawOverride):
+class DDHUDDrawOverride(omr.MPxDrawOverride):
     """
     """
-    NAME = "DHhud_draw_override"
+    NAME = "DDhud_draw_override"
 
     def __init__(self, obj):
         """
         """
-        super(DHHUDDrawOverride, self).__init__(obj, DHHUDDrawOverride.draw)
+        super(DDHUDDrawOverride, self).__init__(obj, DDHUDDrawOverride.draw)
 
-    def supporteDHrawAPIs(self):
+    def supporteDDrawAPIs(self):
         """
         """
         return (omr.MRenderer.kAllDevices)
@@ -407,8 +407,8 @@ class DHHUDDrawOverride(omr.MPxDrawOverride):
         """
         """
         data = old_data
-        if not isinstance(data, DHHUDData):
-            data = DHHUDData()
+        if not isinstance(data, DDHUDData):
+            data = DDHUDData()
         fnDagNode = om.MFnDagNode(obj_path)
         # 需要先获取数据
         data.camera_name = fnDagNode.findPlug("camera", False).asString()
@@ -440,7 +440,7 @@ class DHHUDDrawOverride(omr.MPxDrawOverride):
     def addUIDrawables(self, obj_path, draw_manager, frame_context, data):
         """
         """
-        if not isinstance(data, DHHUDData):
+        if not isinstance(data, DDHUDData):
             return
 
         camera_path = frame_context.getCurrentCameraPath()
@@ -478,7 +478,7 @@ class DHHUDDrawOverride(omr.MPxDrawOverride):
     def creator(obj):
         """
         """
-        return DHHUDDrawOverride(obj)
+        return DDHUDDrawOverride(obj)
 
     @staticmethod
     def draw(context, data):
@@ -568,30 +568,30 @@ def initializePlugin(obj):
     pluginFn = om.MFnPlugin(obj, "wangdonghao", "1.0.0", "Any")
 
     try:
-        pluginFn.registerNode(DHHUDLocator.NAME,
-                              DHHUDLocator.TYPE_ID,
-                              DHHUDLocator.creator,
-                              DHHUDLocator.initialize,
+        pluginFn.registerNode(DDHUDLocator.NAME,
+                              DDHUDLocator.TYPE_ID,
+                              DDHUDLocator.creator,
+                              DDHUDLocator.initialize,
                               om.MPxNode.kLocatorNode,
-                              DHHUDLocator.DRAW_DB_CLASSIFICATION)
-        pluginFn.registerNode(DHHUDBorderLocator.NAME,
-                              DHHUDBorderLocator.TYPE_ID,
-                              DHHUDBorderLocator.creator,
-                              DHHUDBorderLocator.initialize,
+                              DDHUDLocator.DRAW_DB_CLASSIFICATION)
+        pluginFn.registerNode(DDHUDBorderLocator.NAME,
+                              DDHUDBorderLocator.TYPE_ID,
+                              DDHUDBorderLocator.creator,
+                              DDHUDBorderLocator.initialize,
                               om.MPxNode.kLocatorNode,
-                              DHHUDBorderLocator.DRAW_DB_CLASSIFICATION)
+                              DDHUDBorderLocator.DRAW_DB_CLASSIFICATION)
     except:
-        om.MGlobal.displayError("Failed to register node: {0}".format(DHHUDLocator.NAME))
+        om.MGlobal.displayError("Failed to register node: {0}".format(DDHUDLocator.NAME))
 
     try:
-        omr.MDrawRegistry.registerDrawOverrideCreator(DHHUDLocator.DRAW_DB_CLASSIFICATION,
-                                                      DHHUDLocator.DRAW_REGISTRANT_ID,
-                                                      DHHUDDrawOverride.creator)
-        omr.MDrawRegistry.registerDrawOverrideCreator(DHHUDBorderLocator.DRAW_DB_CLASSIFICATION,
-                                                      DHHUDBorderLocator.DRAW_REGISTRANT_ID,
-                                                      DHHUDBorderDrawOverride.creator)
+        omr.MDrawRegistry.registerDrawOverrideCreator(DDHUDLocator.DRAW_DB_CLASSIFICATION,
+                                                      DDHUDLocator.DRAW_REGISTRANT_ID,
+                                                      DDHUDDrawOverride.creator)
+        omr.MDrawRegistry.registerDrawOverrideCreator(DDHUDBorderLocator.DRAW_DB_CLASSIFICATION,
+                                                      DDHUDBorderLocator.DRAW_REGISTRANT_ID,
+                                                      DDHUDBorderDrawOverride.creator)
     except:
-        om.MGlobal.displayError("Failed to register draw override: {0}".format(DHHUDDrawOverride.NAME))
+        om.MGlobal.displayError("Failed to register draw override: {0}".format(DDHUDDrawOverride.NAME))
 
 def uninitializePlugin(obj):
     """
@@ -599,16 +599,16 @@ def uninitializePlugin(obj):
     pluginFn = om.MFnPlugin(obj)
 
     try:
-        omr.MDrawRegistry.deregisterDrawOverrideCreator(DHHUDLocator.DRAW_DB_CLASSIFICATION,
-                                                        DHHUDLocator.DRAW_REGISTRANT_ID)
-        omr.MDrawRegistry.deregisterDrawOverrideCreator(DHHUDBorderLocator.DRAW_DB_CLASSIFICATION,
-                                                        DHHUDBorderLocator.DRAW_REGISTRANT_ID)
+        omr.MDrawRegistry.deregisterDrawOverrideCreator(DDHUDLocator.DRAW_DB_CLASSIFICATION,
+                                                        DDHUDLocator.DRAW_REGISTRANT_ID)
+        omr.MDrawRegistry.deregisterDrawOverrideCreator(DDHUDBorderLocator.DRAW_DB_CLASSIFICATION,
+                                                        DDHUDBorderLocator.DRAW_REGISTRANT_ID)
     except:
-        om.MGlobal.displayError("Failed to deregister draw override: {0}".format(DHHUDDrawOverride.NAME))
+        om.MGlobal.displayError("Failed to deregister draw override: {0}".format(DDHUDDrawOverride.NAME))
 
     try:
-        pluginFn.deregisterNode(DHHUDLocator.TYPE_ID)
-        pluginFn.deregisterNode(DHHUDBorderLocator.TYPE_ID)
+        pluginFn.deregisterNode(DDHUDLocator.TYPE_ID)
+        pluginFn.deregisterNode(DDHUDBorderLocator.TYPE_ID)
     except:
-        om.MGlobal.displayError("Failed to unregister node: {0}".format(DHHUDLocator.NAME))
+        om.MGlobal.displayError("Failed to unregister node: {0}".format(DDHUDLocator.NAME))
 
