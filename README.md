@@ -7,6 +7,6 @@ createNode DDHUD;</br>
 createNode DDHUDBorder;
 # 
 ![ex1](doc/ex1.jpg)
-![ex2](doc/ex2.jpg)
+![ex2](doc/ex2.png)
 
 
